@@ -17,7 +17,7 @@ def recommend(file, price, cuisines_list):
     result = build_rating_list(name_to_rating, names_final)
 
     #return sorted list
-    return result
+    return result[::-1]
 
 def read_restaurants(file):
     #return dict {name: rating}
@@ -45,6 +45,7 @@ def read_restaurants(file):
                 cuisine_to_names[cuisine].append(name)
         
         f.readline() #space between restaurants   
+    f.close()
         
     return name_to_rating, price_to_names, cuisine_to_names 
 
@@ -54,12 +55,20 @@ def filter_by_cuisine(names_matching_price, cuisine_to_names, cuisines_list):
     names_final = []
 
     for cuisine in cuisines_list:
-        if cuisine_to_names[cuisine] in names_matching_price:
-            names_final.append(cuisine_to_names[cuisine])
+        for restaurant in cuisine_to_names[cuisine]:
+            if restaurant in names_matching_price:
+                names_final.append(restaurant)
+
+    return names_final
 
 def build_rating_list(name_to_rating, names_final):
     #take in list of restaurants matching price and cuisine, return that list sorted by rating
 
     result = []
 
-recommend(FILENAME, '$', 'Thai')
+    for name in names_final:
+        result.append([name_to_rating[name], name])
+
+    return sorted(result)
+
+print(recommend(FILENAME, '$$', 'Mexican'))
