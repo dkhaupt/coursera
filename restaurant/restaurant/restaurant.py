@@ -56,7 +56,7 @@ def filter_by_cuisine(names_matching_price, cuisine_to_names, cuisines_list):
 
     for cuisine in cuisines_list:
         for restaurant in cuisine_to_names[cuisine]:
-            if restaurant in names_matching_price:
+            if restaurant in names_matching_price and restaurant not in names_final:
                 names_final.append(restaurant)
 
     return names_final
@@ -71,4 +71,4 @@ def build_rating_list(name_to_rating, names_final):
 
     return sorted(result)
 
-print(recommend(FILENAME, '$$', 'Mexican'))
+print(recommend(FILENAME, '$', 'Thai, Chinese'))
