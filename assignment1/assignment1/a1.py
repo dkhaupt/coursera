@@ -33,7 +33,7 @@ def stock_price_summary(price_changes):
         if change > 0:
             pos_gains += change
         elif change < 0:
-            neg_gains -= change
+            neg_gains += change
 
     return (pos_gains, neg_gains)
 
@@ -51,8 +51,7 @@ def swap_k(L, k):
     [5, 6, 3, 4, 1, 2]
     """
 
-    for i in range(k):
-        L[i+1], L[-(i+1)] = L[-1(i+1)], L[i+1]
+    L[len(L)-k:len(L)], L[0:k] = L[0:k], L[len(L)-k:len(L)] 
 
 
 if __name__ == '__main__':
