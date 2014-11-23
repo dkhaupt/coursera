@@ -1,7 +1,6 @@
 import a1
 import unittest
 
-
 class TestSwapK(unittest.TestCase):
     """ Test class for function a1.swap_k. """
 
