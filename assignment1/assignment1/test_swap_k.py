@@ -14,10 +14,19 @@ class TestSwapK(unittest.TestCase):
 
         self.assertEqual(nums, nums_expected)
 
-    def test_max_swap(self):
+    def test_max_swap_even(self):
 
         nums = [1, 2, 3, 4, 5, 6]
         nums_expected = [4, 5, 6, 1, 2, 3]
+        k = 3
+        a1.swap_k(nums,k)
+
+        self.assertEqual(nums, nums_expected)
+
+    def test_max_swap_odd(self):
+
+        nums = [1, 2, 3, 4, 5, 6, 7]
+        nums_expected = [5, 6, 7, 4, 1, 2, 3]
         k = 3
         a1.swap_k(nums,k)
 
