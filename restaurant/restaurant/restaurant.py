@@ -71,4 +71,4 @@ def build_rating_list(name_to_rating, names_final):
 
     return sorted(result)
 
-print(recommend(FILENAME, '$', 'Thai, Chinese'))
+print(recommend(FILENAME, '$', 'Thai, Chinese, Malaysian'))
